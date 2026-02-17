@@ -1,17 +1,26 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="icon" type="image/svg+xml" href="./vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Alpha-ST - AI 기반 자동매매 플랫폼. 뉴스 분석과 기술적 지표를 활용한 스마트 트레이딩." />
-  <meta name="keywords" content="AI 자동매매, 주식 자동매매, 트레이딩 봇, AI 투자, 알고리즘 트레이딩, Upbit, Binance" />
-  <title>Alpha-ST | AI 자동매매 플랫폼</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
+  <meta name="description" content="Alpha-ST - AI-driven system trading web platform" />
+  <meta name="keywords" content="AI trading, system trading, crypto bot, upbit, binance" />
+  <script>
+    (function (locationData) {
+      if (locationData.search[1] === '/') {
+        const decoded = locationData.search
+          .slice(1)
+          .split('&')
+          .map((segment) => segment.replace(/~and~/g, '&'))
+          .join('?')
+
+        window.history.replaceState(null, '', decoded + locationData.hash)
+      }
+    }(window.location))
+  </script>
+  <title>Alpha-ST | AI System Trading Platform</title>
 </head>
 
 <body>

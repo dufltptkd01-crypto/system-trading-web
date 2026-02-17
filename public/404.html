@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Redirecting...</title>
+  <script>
+    // GitHub Pages SPA fallback.
+    const pathSegmentsToKeep = 1;
+    const locationData = window.location;
+
+    const redirectUrl =
+      locationData.protocol + '//' + locationData.hostname + (locationData.port ? ':' + locationData.port : '') +
+      locationData.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+      locationData.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+      (locationData.search ? '&' + locationData.search.slice(1).replace(/&/g, '~and~') : '') +
+      locationData.hash;
+
+    locationData.replace(redirectUrl);
+  </script>
+</head>
+
+<body></body>
+
+</html>

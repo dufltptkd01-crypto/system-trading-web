@@ -49,13 +49,15 @@ export default function Navbar() {
 
     const moveToSection = (hash) => {
         if (location.pathname !== '/') {
-            window.location.href = `/${hash}`
+            window.location.assign(`${import.meta.env.BASE_URL}${hash}`)
             return
         }
 
         const target = document.querySelector(hash)
         if (target) {
             target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        } else {
+            window.location.hash = hash
         }
     }
 

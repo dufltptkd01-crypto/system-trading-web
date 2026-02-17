@@ -34,9 +34,9 @@ const sections = [
 const renderLink = (link) => {
     if (link.to.startsWith('/#')) {
         return (
-            <a href={link.to} className="text-sm text-ink-400 transition-colors hover:text-ink-200">
+            <Link to={link.to} className="text-sm text-ink-400 transition-colors hover:text-ink-200">
                 {link.label}
-            </a>
+            </Link>
         )
     }
 
