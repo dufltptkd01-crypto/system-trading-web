@@ -9,7 +9,7 @@ import FAQSection from '../components/faq/FAQSection.jsx'
 
 export default function LandingPage() {
     return (
-        <main>
+        <main className="pt-[88px]">
             <HeroSection />
             <FeaturesSection />
             <HowItWorksSection />

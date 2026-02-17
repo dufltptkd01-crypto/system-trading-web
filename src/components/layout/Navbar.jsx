@@ -12,7 +12,7 @@ const content = {
             { label: '대시보드', hash: '#dashboard' },
             { label: '보안', hash: '#security' },
             { label: '요금제', hash: '#pricing' },
-            { label: '자주 묻는 질문', hash: '#faq' },
+            { label: 'FAQ', hash: '#faq' },
         ],
         tradingLinks: [
             { label: '업비트 자동매매', to: '/trading/upbit' },
@@ -58,6 +58,7 @@ function getBasePath() {
 export default function Navbar() {
     const { locale, setLocale } = useI18n()
     const copy = content[locale] || content.ko
+
     const [isScrolled, setIsScrolled] = useState(false)
     const [isMobileOpen, setIsMobileOpen] = useState(false)
     const [isTradingOpen, setIsTradingOpen] = useState(false)
@@ -103,18 +104,16 @@ export default function Navbar() {
 
     return (
         <header
-            className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-                isScrolled
-                    ? 'border-b border-white/10 bg-ink-950/90 backdrop-blur-xl shadow-[0_12px_26px_rgba(0,0,0,0.32)]'
-                    : 'bg-transparent'
+            className={`fixed inset-x-0 top-0 z-50 border-b border-white/8 bg-ink-950/80 backdrop-blur-xl transition-all duration-300 ${
+                isScrolled ? 'shadow-[0_14px_28px_rgba(2,6,14,0.45)]' : ''
             }`}
         >
-            <nav className="container-custom flex h-[82px] items-center justify-between gap-4">
+            <nav className="container-custom flex h-[88px] items-center justify-between gap-4">
                 <Link to="/" className="shrink-0" aria-label={copy.homeAria}>
                     <Logo compact showSub={false} />
                 </Link>
 
-                <div className="hidden xl:flex items-center gap-5">
+                <div className="hidden xl:flex items-center gap-6">
                     {copy.sectionLinks.map((item) => (
                         <button
                             key={item.hash}
@@ -135,7 +134,7 @@ export default function Navbar() {
                             <ChevronDown size={14} className={`transition-transform ${isTradingOpen ? 'rotate-180' : ''}`} />
                         </button>
                         {isTradingOpen && (
-                            <div className="absolute right-0 top-11 w-56 glass-card p-2">
+                            <div className="absolute right-0 top-12 w-56 glass-card p-2">
                                 {copy.tradingLinks.map((link) => (
                                     <Link
                                         key={link.to}
@@ -151,11 +150,13 @@ export default function Navbar() {
                 </div>
 
                 <div className="hidden xl:flex items-center gap-2.5">
-                    <div className="inline-flex items-center rounded-full border border-white/12 bg-ink-900/75 p-1">
+                    <div className="inline-flex items-center rounded-full border border-white/14 bg-ink-900/72 p-1">
                         <button
                             type="button"
                             onClick={() => setLocale('ko')}
-                            className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${locale === 'ko' ? 'bg-white/14 text-ink-100' : 'text-ink-400 hover:text-ink-200'}`}
+                            className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+                                locale === 'ko' ? 'bg-white/14 text-ink-100' : 'text-ink-400 hover:text-ink-200'
+                            }`}
                             aria-label={`${copy.language} Korean`}
                         >
                             한국어
@@ -163,7 +164,9 @@ export default function Navbar() {
                         <button
                             type="button"
                             onClick={() => setLocale('en')}
-                            className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${locale === 'en' ? 'bg-white/14 text-ink-100' : 'text-ink-400 hover:text-ink-200'}`}
+                            className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+                                locale === 'en' ? 'bg-white/14 text-ink-100' : 'text-ink-400 hover:text-ink-200'
+                            }`}
                             aria-label={`${copy.language} English`}
                         >
                             English
@@ -188,7 +191,7 @@ export default function Navbar() {
                 </button>
             </nav>
 
-            <div className={`xl:hidden overflow-hidden transition-all duration-300 ${isMobileOpen ? 'max-h-[560px]' : 'max-h-0'}`}>
+            <div className={`xl:hidden overflow-hidden transition-all duration-300 ${isMobileOpen ? 'max-h-[640px]' : 'max-h-0'}`}>
                 <div className="container-custom space-y-2 border-t border-white/10 pb-5 pt-2">
                     {copy.sectionLinks.map((item) => (
                         <button
@@ -203,18 +206,22 @@ export default function Navbar() {
                         </button>
                     ))}
 
-                    <div className="mt-3 inline-flex items-center rounded-full border border-white/12 bg-ink-900/75 p-1">
+                    <div className="mt-3 inline-flex items-center rounded-full border border-white/14 bg-ink-900/72 p-1">
                         <button
                             type="button"
                             onClick={() => setLocale('ko')}
-                            className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${locale === 'ko' ? 'bg-white/14 text-ink-100' : 'text-ink-400 hover:text-ink-200'}`}
+                            className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+                                locale === 'ko' ? 'bg-white/14 text-ink-100' : 'text-ink-400 hover:text-ink-200'
+                            }`}
                         >
                             한국어
                         </button>
                         <button
                             type="button"
                             onClick={() => setLocale('en')}
-                            className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${locale === 'en' ? 'bg-white/14 text-ink-100' : 'text-ink-400 hover:text-ink-200'}`}
+                            className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+                                locale === 'en' ? 'bg-white/14 text-ink-100' : 'text-ink-400 hover:text-ink-200'
+                            }`}
                         >
                             English
                         </button>
