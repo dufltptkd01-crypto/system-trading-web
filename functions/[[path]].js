@@ -3,9 +3,13 @@ function hasFileExtension(pathname) {
 }
 
 function cloneWithStatus(response, status = 200) {
+  const headers = new Headers(response.headers)
+  headers.delete('location')
+  headers.delete('content-length')
+
   return new Response(response.body, {
     status,
-    headers: response.headers,
+    headers,
   })
 }
 
@@ -15,7 +19,8 @@ export async function onRequest(context) {
 
   const distIndexUrl = new URL('/dist/index.html', url)
   const distIndexResponse = await env.ASSETS.fetch(new Request(distIndexUrl, request))
-  const hasDistFallback = distIndexResponse.status !== 404
+  const distContentType = (distIndexResponse.headers.get('content-type') || '').toLowerCase()
+  const hasDistFallback = distIndexResponse.status === 200 && distContentType.includes('text/html')
 
   if (hasDistFallback) {
     if (url.pathname === '/' || !hasFileExtension(url.pathname)) {
