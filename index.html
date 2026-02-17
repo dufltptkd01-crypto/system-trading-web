@@ -16,7 +16,11 @@
           .map((segment) => segment.replace(/~and~/g, '&'))
           .join('?')
 
-        window.history.replaceState(null, '', decoded + locationData.hash)
+        const basePath = locationData.pathname.endsWith('/')
+          ? locationData.pathname.slice(0, -1)
+          : locationData.pathname
+
+        window.history.replaceState(null, '', basePath + decoded + locationData.hash)
       }
     }(window.location))
   </script>
