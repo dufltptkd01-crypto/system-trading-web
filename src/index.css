@@ -98,19 +98,19 @@ a {
 }
 
 .container-custom {
-  width: min(1200px, 100% - 2rem);
+  width: min(1160px, 100% - 2.25rem);
   margin-inline: auto;
 }
 
 @media (min-width: 768px) {
   .container-custom {
-    width: min(1200px, 100% - 3rem);
+    width: min(1160px, 100% - 4rem);
   }
 }
 
 @media (min-width: 1200px) {
   .container-custom {
-    width: min(1200px, 100% - 4rem);
+    width: min(1160px, 100% - 6rem);
   }
 }
 

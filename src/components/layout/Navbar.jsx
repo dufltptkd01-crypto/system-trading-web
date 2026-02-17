@@ -104,21 +104,21 @@ export default function Navbar() {
 
     return (
         <header
-            className={`fixed inset-x-0 top-0 z-50 border-b border-white/8 bg-ink-950/80 backdrop-blur-xl transition-all duration-300 ${
+            className={`sticky top-0 z-50 border-b border-white/8 bg-ink-950/84 backdrop-blur-xl transition-all duration-300 ${
                 isScrolled ? 'shadow-[0_14px_28px_rgba(2,6,14,0.45)]' : ''
             }`}
         >
-            <nav className="container-custom flex h-[88px] items-center justify-between gap-4">
+            <nav className="container-custom flex h-[84px] items-center justify-between gap-4">
                 <Link to="/" className="shrink-0" aria-label={copy.homeAria}>
                     <Logo compact showSub={false} />
                 </Link>
 
-                <div className="hidden xl:flex items-center gap-6">
+                <div className="hidden xl:flex items-center gap-7">
                     {copy.sectionLinks.map((item) => (
                         <button
                             key={item.hash}
                             onClick={() => moveToSection(item.hash)}
-                            className="text-[13px] font-medium text-ink-300 transition-colors hover:text-ink-100"
+                            className="text-sm font-medium text-ink-300 transition-colors hover:text-ink-100"
                         >
                             {item.label}
                         </button>
@@ -128,7 +128,7 @@ export default function Navbar() {
                         <button
                             type="button"
                             onClick={() => setIsTradingOpen((prev) => !prev)}
-                            className="inline-flex items-center gap-1 text-[13px] font-medium text-ink-300 transition-colors hover:text-ink-100"
+                            className="inline-flex items-center gap-1 text-sm font-medium text-ink-300 transition-colors hover:text-ink-100"
                         >
                             {copy.trading}
                             <ChevronDown size={14} className={`transition-transform ${isTradingOpen ? 'rotate-180' : ''}`} />
@@ -150,24 +150,27 @@ export default function Navbar() {
                 </div>
 
                 <div className="hidden xl:flex items-center gap-2.5">
-                    <div className="inline-flex items-center rounded-full border border-white/14 bg-ink-900/72 p-1">
+                    <div className="inline-flex items-center gap-1.5 rounded-full border border-white/14 bg-ink-900/72 px-1.5 py-1">
                         <button
                             type="button"
                             onClick={() => setLocale('ko')}
-                            className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+                            className={`min-w-[76px] rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                                 locale === 'ko' ? 'bg-white/14 text-ink-100' : 'text-ink-400 hover:text-ink-200'
                             }`}
                             aria-label={`${copy.language} Korean`}
+                            aria-pressed={locale === 'ko'}
                         >
                             한국어
                         </button>
+                        <span className="text-[11px] text-ink-500">/</span>
                         <button
                             type="button"
                             onClick={() => setLocale('en')}
-                            className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+                            className={`min-w-[76px] rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                                 locale === 'en' ? 'bg-white/14 text-ink-100' : 'text-ink-400 hover:text-ink-200'
                             }`}
                             aria-label={`${copy.language} English`}
+                            aria-pressed={locale === 'en'}
                         >
                             English
                         </button>
@@ -206,22 +209,25 @@ export default function Navbar() {
                         </button>
                     ))}
 
-                    <div className="mt-3 inline-flex items-center rounded-full border border-white/14 bg-ink-900/72 p-1">
+                    <div className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-white/14 bg-ink-900/72 px-1.5 py-1">
                         <button
                             type="button"
                             onClick={() => setLocale('ko')}
-                            className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+                            className={`min-w-[76px] rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                                 locale === 'ko' ? 'bg-white/14 text-ink-100' : 'text-ink-400 hover:text-ink-200'
                             }`}
+                            aria-pressed={locale === 'ko'}
                         >
                             한국어
                         </button>
+                        <span className="text-[11px] text-ink-500">/</span>
                         <button
                             type="button"
                             onClick={() => setLocale('en')}
-                            className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+                            className={`min-w-[76px] rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                                 locale === 'en' ? 'bg-white/14 text-ink-100' : 'text-ink-400 hover:text-ink-200'
                             }`}
+                            aria-pressed={locale === 'en'}
                         >
                             English
                         </button>
