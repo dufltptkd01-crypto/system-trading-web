@@ -30,6 +30,8 @@ function App() {
                 <Route path="/trading/upbit" element={<UpbitTradingPage />} />
                 <Route path="/trading/binance" element={<BinanceTradingPage />} />
                 <Route path="/recommendations" element={<StockRecommendationPage />} />
+                <Route path="/dashboard" element={<LandingPage />} />
+                <Route path="*" element={<LandingPage />} />
             </Routes>
             <Footer />
         </div>

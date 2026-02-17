@@ -1,17 +1,22 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 export default function TradingViewWidget({ symbol = 'BINANCE:BTCUSDT', height = 500, theme = 'dark' }) {
     const containerRef = useRef(null)
+    const [loadError, setLoadError] = useState('')
 
     useEffect(() => {
         if (!containerRef.current) return
 
         containerRef.current.innerHTML = ''
+        setLoadError('')
 
         const script = document.createElement('script')
         script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js'
         script.type = 'text/javascript'
         script.async = true
+        script.onerror = () => {
+            setLoadError('Chart widget failed to load. Check network or content-security settings.')
+        }
         script.innerHTML = JSON.stringify({
             autosize: true,
             symbol: symbol,
@@ -35,6 +40,17 @@ export default function TradingViewWidget({ symbol = 'BINANCE:BTCUSDT', height =
             }
         }
     }, [symbol, theme])
+
+    if (loadError) {
+        return (
+            <div
+                className="rounded-xl border border-danger-500/30 bg-danger-500/10 p-4 text-sm text-danger-400"
+                style={{ minHeight: `${height}px` }}
+            >
+                {loadError}
+            </div>
+        )
+    }
 
     return (
         <div className="tradingview-widget-container rounded-xl overflow-hidden border border-white/5" style={{ height: `${height}px` }}>
