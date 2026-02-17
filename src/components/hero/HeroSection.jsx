@@ -77,7 +77,7 @@ export default function HeroSection() {
     const copy = content[locale] || content.ko
 
     return (
-        <section id="hero" className="relative overflow-hidden pb-28 pt-28 md:pb-40 md:pt-32">
+        <section id="hero" className="relative overflow-hidden pb-28 pt-36 md:pb-40 md:pt-44">
             <div className="pointer-events-none absolute inset-0 hero-surface">
                 <div className="absolute -left-32 top-8 h-80 w-80 rounded-full bg-brand-400/22 blur-[130px]" />
                 <div className="absolute -right-10 top-8 h-80 w-80 rounded-full bg-signal-400/20 blur-[130px]" />
@@ -104,7 +104,7 @@ export default function HeroSection() {
                         {copy.badge}
                     </div>
 
-                    <h1 className="animate-rise mt-8 text-[clamp(2.6rem,6.7vw,5.5rem)] font-bold leading-[1.28] text-ink-100 text-balance md:leading-[1.24]" style={{ animationDelay: '0.08s' }}>
+                    <h1 className="animate-rise mt-10 text-[clamp(2.6rem,6.7vw,5.5rem)] font-bold leading-[1.28] text-ink-100 text-balance md:leading-[1.24]" style={{ animationDelay: '0.08s' }}>
                         <span className="block">{copy.headlinePrimary}</span>
                         <span className="gradient-text mt-1.5 block md:mt-2">{copy.headlineAccent}</span>
                     </h1>
