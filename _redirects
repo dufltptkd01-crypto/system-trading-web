@@ -1,0 +1,3 @@
+/assets/*      /dist/assets/:splat   200
+/vite.svg      /dist/vite.svg        200
+/*             /dist/index.html      200
