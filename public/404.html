@@ -6,8 +6,8 @@
   <title>Redirecting...</title>
   <script>
     // GitHub Pages SPA fallback.
-    const pathSegmentsToKeep = 1;
     const locationData = window.location;
+    const pathSegmentsToKeep = /^\/system-trading-web(\/|$)/.test(locationData.pathname) ? 1 : 0;
 
     const redirectUrl =
       locationData.protocol + '//' + locationData.hostname + (locationData.port ? ':' + locationData.port : '') +
