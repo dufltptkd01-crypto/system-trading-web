@@ -1,4 +1,4 @@
-﻿import React from 'react'
+import React from 'react'
 import { Eye, Globe, KeyRound, Lock, Server, ShieldAlert } from 'lucide-react'
 
 const securityItems = [
@@ -42,7 +42,7 @@ const securityItems = [
 
 export default function SecuritySection() {
     return (
-        <section id="security" className="relative py-22 md:py-28 overflow-hidden">
+        <section id="security" className="relative py-24 md:py-28 overflow-hidden">
             <div className="pointer-events-none absolute right-0 top-16 h-80 w-80 rounded-full bg-brand-400/10 blur-[130px]" />
 
             <div className="container-custom relative z-10">
@@ -51,7 +51,7 @@ export default function SecuritySection() {
                     <h2 className="mt-4 text-3xl font-bold tracking-tight text-ink-100 md:text-4xl">
                         Guardrails Are Not Optional
                     </h2>
-                    <p className="mt-4 text-ink-300">
+                    <p className="mt-4 text-ink-300 leading-relaxed">
                         Automation only works long-term when risk and key management are treated as product features.
                     </p>
                 </div>
@@ -89,3 +89,4 @@ export default function SecuritySection() {
         </section>
     )
 }
+

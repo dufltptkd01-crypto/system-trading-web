@@ -1,4 +1,4 @@
-﻿import React from 'react'
+import React from 'react'
 import { SlidersHorizontal, Cpu, Rocket } from 'lucide-react'
 
 const steps = [
@@ -27,15 +27,15 @@ const steps = [
 
 export default function HowItWorksSection() {
     return (
-        <section id="how-it-works" className="relative py-22 md:py-28">
+        <section id="how-it-works" className="relative py-24 md:py-28">
             <div className="container-custom">
                 <div className="mx-auto mb-14 max-w-2xl text-center">
                     <span className="chip border-signal-400/40 text-signal-400">Workflow</span>
                     <h2 className="mt-4 text-3xl font-bold tracking-tight text-ink-100 md:text-4xl">
                         Three Steps,
-                        <span className="gradient-text-gold"> One Repeatable Process</span>
+                        <span className="gradient-text-gold block">One Repeatable Process</span>
                     </h2>
-                    <p className="mt-4 text-ink-300">
+                    <p className="mt-4 text-ink-300 leading-relaxed">
                         The product is opinionated by design: fewer knobs, safer defaults, and a process you can review.
                     </p>
                 </div>
@@ -74,3 +74,4 @@ export default function HowItWorksSection() {
         </section>
     )
 }
+

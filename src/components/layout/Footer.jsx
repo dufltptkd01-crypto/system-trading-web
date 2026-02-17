@@ -1,5 +1,6 @@
-﻿import React from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
+import Logo from '../brand/Logo.jsx'
 
 const sections = [
     {
@@ -61,16 +62,10 @@ export default function Footer() {
             <div className="container-custom py-14">
                 <div className="grid gap-10 md:grid-cols-[1.4fr_repeat(3,minmax(0,1fr))]">
                     <div>
-                        <Link to="/" className="inline-flex items-center gap-3">
-                            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-signal-500 text-xs font-bold text-ink-950">
-                                ST
-                            </div>
-                            <div>
-                                <p className="text-base font-semibold text-ink-100 leading-none">Alpha-ST</p>
-                                <p className="text-[10px] uppercase tracking-[0.24em] text-ink-400">system trading</p>
-                            </div>
+                        <Link to="/" className="inline-flex items-center">
+                            <Logo compact />
                         </Link>
-                        <p className="mt-4 max-w-sm text-sm text-ink-400 leading-relaxed">
+                        <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-400">
                             An AI-first trading workspace for signals, automation, and risk management.
                             Built for traders who want structure, speed, and consistent execution.
                         </p>
@@ -88,7 +83,7 @@ export default function Footer() {
                     ))}
                 </div>
 
-                <div className="section-divider mt-10 mb-6" />
+                <div className="section-divider mb-6 mt-10" />
 
                 <div className="flex flex-col gap-3 text-xs text-ink-500 sm:flex-row sm:items-center sm:justify-between">
                     <p>Copyright 2026 Alpha-ST. All rights reserved.</p>

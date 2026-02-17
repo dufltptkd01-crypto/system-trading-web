@@ -1,6 +1,7 @@
-﻿import React, { useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Eye, EyeOff, Lock, Mail } from 'lucide-react'
+import Logo from '../components/brand/Logo.jsx'
 
 export default function LoginPage() {
     const [email, setEmail] = useState('')
@@ -27,7 +28,7 @@ export default function LoginPage() {
     }
 
     return (
-        <section className="relative flex min-h-screen items-center justify-center px-4 pb-14 pt-28">
+        <section className="relative flex min-h-screen items-center justify-center px-4 pb-14 pt-32 md:pt-36">
             <div className="pointer-events-none absolute inset-0">
                 <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-brand-400/14 blur-[120px]" />
                 <div className="absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-signal-400/10 blur-[130px]" />
@@ -35,12 +36,8 @@ export default function LoginPage() {
 
             <div className="relative z-10 w-full max-w-md">
                 <div className="mb-7 text-center">
-                    <Link to="/" className="inline-flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-signal-500 text-xs font-bold text-ink-950">ST</div>
-                        <div className="text-left">
-                            <p className="text-base font-semibold text-ink-100 leading-none">Alpha-ST</p>
-                            <p className="text-[10px] uppercase tracking-[0.22em] text-ink-500">system trading</p>
-                        </div>
+                    <Link to="/" className="inline-flex items-center">
+                        <Logo compact />
                     </Link>
                     <h1 className="mt-5 text-2xl font-semibold text-ink-100">Sign in</h1>
                     <p className="mt-1 text-sm text-ink-400">Continue to your trading workspace</p>

@@ -1,4 +1,4 @@
-﻿import React from 'react'
+import React from 'react'
 import { Brain, Bot, ShieldCheck, BarChart3, Zap, Layers } from 'lucide-react'
 
 const features = [
@@ -42,15 +42,15 @@ const features = [
 
 export default function FeaturesSection() {
     return (
-        <section id="features" className="relative py-22 md:py-28">
+        <section id="features" className="relative py-24 md:py-28">
             <div className="container-custom">
                 <div className="mx-auto mb-14 max-w-2xl text-center">
                     <span className="chip border-brand-400/35 text-brand-300">Core capabilities</span>
                     <h2 className="mt-4 text-3xl font-bold tracking-tight text-ink-100 md:text-4xl">
                         Built To Feel Predictable,
-                        <span className="gradient-text"> Even In Fast Markets</span>
+                        <span className="gradient-text block">Even In Fast Markets</span>
                     </h2>
-                    <p className="mt-4 text-ink-300">
+                    <p className="mt-4 text-ink-300 leading-relaxed">
                         Every feature is designed around clarity: cleaner signal context, safer execution,
                         and fewer hidden behaviors.
                     </p>
@@ -78,3 +78,4 @@ export default function FeaturesSection() {
         </section>
     )
 }
+

@@ -1,6 +1,7 @@
-﻿import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { ChevronDown, Menu, X } from 'lucide-react'
+import Logo from '../brand/Logo.jsx'
 
 const sectionLinks = [
     { label: 'Features', hash: '#features' },
@@ -17,6 +18,12 @@ const tradingLinks = [
     { label: 'AI Recommendations', to: '/recommendations' },
 ]
 
+function getBasePath() {
+    const base = import.meta.env.BASE_URL || '/'
+    if (base === './' || base === '.') return '/'
+    return base.startsWith('/') ? base : `/${base}`
+}
+
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false)
     const [isMobileOpen, setIsMobileOpen] = useState(false)
@@ -25,7 +32,7 @@ export default function Navbar() {
     const location = useLocation()
 
     useEffect(() => {
-        const onScroll = () => setIsScrolled(window.scrollY > 8)
+        const onScroll = () => setIsScrolled(window.scrollY > 6)
         window.addEventListener('scroll', onScroll)
         onScroll()
         return () => window.removeEventListener('scroll', onScroll)
@@ -49,7 +56,7 @@ export default function Navbar() {
 
     const moveToSection = (hash) => {
         if (location.pathname !== '/') {
-            window.location.assign(`${import.meta.env.BASE_URL}${hash}`)
+            window.location.assign(`${getBasePath()}${hash}`)
             return
         }
 
@@ -65,27 +72,21 @@ export default function Navbar() {
         <header
             className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
                 isScrolled
-                    ? 'border-b border-white/10 bg-ink-950/82 backdrop-blur-xl shadow-[0_10px_28px_rgba(0,0,0,0.28)]'
+                    ? 'border-b border-white/10 bg-ink-950/90 backdrop-blur-xl shadow-[0_12px_26px_rgba(0,0,0,0.32)]'
                     : 'bg-transparent'
             }`}
         >
-            <nav className="container-custom flex h-17 items-center justify-between gap-4">
-                <Link to="/" className="flex items-center gap-3 shrink-0">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-signal-500 text-xs font-bold text-ink-950">
-                        ST
-                    </div>
-                    <div>
-                        <p className="text-[15px] font-semibold text-ink-100 leading-none">Alpha-ST</p>
-                        <p className="text-[10px] uppercase tracking-[0.24em] text-ink-400">system trading</p>
-                    </div>
+            <nav className="container-custom flex h-[82px] items-center justify-between gap-4">
+                <Link to="/" className="shrink-0" aria-label="Alpha-ST Home">
+                    <Logo compact showSub={false} />
                 </Link>
 
-                <div className="hidden xl:flex items-center gap-6">
+                <div className="hidden xl:flex items-center gap-5">
                     {sectionLinks.map((item) => (
                         <button
                             key={item.hash}
                             onClick={() => moveToSection(item.hash)}
-                            className="text-[13px] text-ink-300 transition-colors hover:text-ink-100"
+                            className="text-[13px] font-medium text-ink-300 transition-colors hover:text-ink-100"
                         >
                             {item.label}
                         </button>
@@ -95,13 +96,13 @@ export default function Navbar() {
                         <button
                             type="button"
                             onClick={() => setIsTradingOpen((prev) => !prev)}
-                            className="inline-flex items-center gap-1 text-[13px] text-ink-300 transition-colors hover:text-ink-100"
+                            className="inline-flex items-center gap-1 text-[13px] font-medium text-ink-300 transition-colors hover:text-ink-100"
                         >
                             Trading
                             <ChevronDown size={14} className={`transition-transform ${isTradingOpen ? 'rotate-180' : ''}`} />
                         </button>
                         {isTradingOpen && (
-                            <div className="absolute right-0 top-10 w-56 glass-card p-2">
+                            <div className="absolute right-0 top-11 w-56 glass-card p-2">
                                 {tradingLinks.map((link) => (
                                     <Link
                                         key={link.to}
@@ -116,11 +117,11 @@ export default function Navbar() {
                     </div>
                 </div>
 
-                <div className="hidden xl:flex items-center gap-2">
-                    <Link to="/login" className="btn-secondary text-sm px-4 py-2.5">
+                <div className="hidden xl:flex items-center gap-2.5">
+                    <Link to="/login" className="btn-secondary text-sm px-5 py-2.5">
                         Sign in
                     </Link>
-                    <Link to="/signup" className="btn-primary text-sm px-4 py-2.5">
+                    <Link to="/signup" className="btn-primary text-sm px-5 py-2.5">
                         Start free
                     </Link>
                 </div>
@@ -128,15 +129,15 @@ export default function Navbar() {
                 <button
                     type="button"
                     onClick={() => setIsMobileOpen((prev) => !prev)}
-                    className="xl:hidden inline-flex items-center justify-center rounded-lg border border-white/15 bg-ink-900/70 p-2 text-ink-200"
+                    className="xl:hidden inline-flex items-center justify-center rounded-lg border border-white/15 bg-ink-900/72 p-2 text-ink-200"
                     aria-label="Toggle menu"
                 >
                     {isMobileOpen ? <X size={20} /> : <Menu size={20} />}
                 </button>
             </nav>
 
-            <div className={`xl:hidden overflow-hidden transition-all duration-300 ${isMobileOpen ? 'max-h-[520px]' : 'max-h-0'}`}>
-                <div className="container-custom pb-5 pt-2 border-t border-white/10 space-y-2">
+            <div className={`xl:hidden overflow-hidden transition-all duration-300 ${isMobileOpen ? 'max-h-[560px]' : 'max-h-0'}`}>
+                <div className="container-custom space-y-2 border-t border-white/10 pb-5 pt-2">
                     {sectionLinks.map((item) => (
                         <button
                             key={item.hash}

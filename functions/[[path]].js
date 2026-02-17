@@ -2,6 +2,30 @@ function hasFileExtension(pathname) {
   return /\.[a-zA-Z0-9]+$/.test(pathname)
 }
 
+function normalizeDistPath(pathname) {
+  if (!pathname) return null
+
+  const strippedQuery = pathname.split('?')[0]
+  const normalized = strippedQuery
+    .replace(/^\.\//, '/')
+    .replace(/^\/+/, '/')
+
+  if (normalized.startsWith('/dist/')) return normalized
+  if (!normalized.startsWith('/')) return `/dist/${normalized}`
+  return `/dist${normalized}`
+}
+
+async function readDistEntrypoints(distIndexResponse) {
+  const html = await distIndexResponse.clone().text()
+  const scriptMatch = html.match(/<script[^>]+type="module"[^>]+src="([^"]+)"/i)
+  const cssMatch = html.match(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"/i)
+
+  return {
+    script: normalizeDistPath(scriptMatch?.[1]),
+    css: normalizeDistPath(cssMatch?.[1]),
+  }
+}
+
 function cloneWithStatus(response, status = 200) {
   const headers = new Headers(response.headers)
   headers.delete('location')
@@ -23,7 +47,7 @@ export async function onRequest(context) {
   const hasDistFallback = distIndexResponse.status === 200 && distContentType.includes('text/html')
 
   if (hasDistFallback) {
-    if (url.pathname === '/' || !hasFileExtension(url.pathname)) {
+    if (url.pathname === '/' || url.pathname === '/index.html' || !hasFileExtension(url.pathname)) {
       return cloneWithStatus(distIndexResponse, 200)
     }
 
@@ -33,6 +57,20 @@ export async function onRequest(context) {
       if (mappedResponse.status !== 404) {
         return mappedResponse
       }
+    }
+
+    if (url.pathname === '/src/main.jsx' || url.pathname === '/src/index.css') {
+      const entrypoints = await readDistEntrypoints(distIndexResponse)
+      const mappedPath = url.pathname === '/src/main.jsx' ? entrypoints.script : entrypoints.css
+
+      if (mappedPath) {
+        const mappedResponse = await env.ASSETS.fetch(new Request(new URL(mappedPath, url), request))
+        if (mappedResponse.status !== 404) {
+          return mappedResponse
+        }
+      }
+
+      return new Response('Not Found', { status: 404 })
     }
   }
 

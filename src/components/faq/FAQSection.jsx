@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react'
+import React, { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 
 const faqs = [
@@ -32,15 +32,15 @@ export default function FAQSection() {
     const [openIndex, setOpenIndex] = useState(0)
 
     return (
-        <section id="faq" className="py-22 md:py-28">
+        <section id="faq" className="py-24 md:py-28">
             <div className="container-custom">
                 <div className="mx-auto mb-12 max-w-2xl text-center">
                     <span className="chip border-brand-400/35 text-brand-300">FAQ</span>
                     <h2 className="mt-4 text-3xl font-bold tracking-tight text-ink-100 md:text-4xl">
                         Common Questions,
-                        <span className="gradient-text"> Clear Answers</span>
+                        <span className="gradient-text block">Clear Answers</span>
                     </h2>
-                    <p className="mt-4 text-ink-300">If anything is still unclear, reach out and we can review your setup directly.</p>
+                    <p className="mt-4 text-ink-300 leading-relaxed">If anything is still unclear, reach out and we can review your setup directly.</p>
                 </div>
 
                 <div className="mx-auto max-w-3xl space-y-3">
@@ -73,3 +73,4 @@ export default function FAQSection() {
         </section>
     )
 }
+

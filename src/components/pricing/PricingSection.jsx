@@ -1,4 +1,4 @@
-﻿import React from 'react'
+import React from 'react'
 import { Check, Star } from 'lucide-react'
 
 const plans = [
@@ -55,7 +55,7 @@ const plans = [
 
 export default function PricingSection() {
     return (
-        <section id="pricing" className="relative py-22 md:py-28">
+        <section id="pricing" className="relative py-24 md:py-28">
             <div className="pointer-events-none absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-signal-400/10 blur-[120px]" />
 
             <div className="container-custom relative z-10">
@@ -63,9 +63,9 @@ export default function PricingSection() {
                     <span className="chip border-signal-400/35 text-signal-400">Pricing</span>
                     <h2 className="mt-4 text-3xl font-bold tracking-tight text-ink-100 md:text-4xl">
                         Clear Plans,
-                        <span className="gradient-text-gold"> No Hidden Execution Fee</span>
+                        <span className="gradient-text-gold block">No Hidden Execution Fee</span>
                     </h2>
-                    <p className="mt-4 text-ink-300">Choose by depth of control, not by arbitrary feature walls.</p>
+                    <p className="mt-4 text-ink-300 leading-relaxed">Choose by depth of control, not by arbitrary feature walls.</p>
                 </div>
 
                 <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-3">
@@ -107,3 +107,4 @@ export default function PricingSection() {
         </section>
     )
 }
+

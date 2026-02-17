@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react'
+import React, { useState } from 'react'
 import RecommendedStocks from './RecommendedStocks.jsx'
 import StrategySettings from './StrategySettings.jsx'
 import TradingChart from './TradingChart.jsx'
@@ -15,15 +15,15 @@ export default function DashboardPreview() {
     const [activeTab, setActiveTab] = useState('chart')
 
     return (
-        <section id="dashboard" className="py-22 md:py-28">
+        <section id="dashboard" className="py-24 md:py-28">
             <div className="container-custom">
                 <div className="mx-auto mb-12 max-w-2xl text-center">
                     <span className="chip border-brand-400/35 text-brand-300">Dashboard preview</span>
                     <h2 className="mt-4 text-3xl font-bold tracking-tight text-ink-100 md:text-4xl">
                         One Surface For Signal,
-                        <span className="gradient-text"> Strategy, and Execution</span>
+                        <span className="gradient-text block">Strategy, and Execution</span>
                     </h2>
-                    <p className="mt-4 text-ink-300">
+                    <p className="mt-4 text-ink-300 leading-relaxed">
                         Switch context without losing flow. Everything updates inside the same workspace.
                     </p>
                 </div>
@@ -56,3 +56,4 @@ export default function DashboardPreview() {
         </section>
     )
 }
+

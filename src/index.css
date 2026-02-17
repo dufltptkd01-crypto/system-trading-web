@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -46,25 +46,19 @@ body {
   font-family: var(--font-sans);
   color: var(--color-ink-200);
   background:
-    radial-gradient(circle at 14% 18%, rgba(22, 184, 167, 0.18), transparent 35%),
-    radial-gradient(circle at 82% 2%, rgba(245, 158, 11, 0.15), transparent 38%),
+    radial-gradient(circle at 14% 18%, rgba(22, 184, 167, 0.16), transparent 34%),
+    radial-gradient(circle at 82% 2%, rgba(245, 158, 11, 0.14), transparent 38%),
     linear-gradient(160deg, var(--color-ink-950), var(--color-ink-900) 45%, #111f38 100%);
   min-height: 100vh;
   overflow-x: hidden;
   line-height: 1.55;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 42px 42px;
-  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.45), transparent 80%);
-  z-index: -1;
+  content: none;
 }
 
 a {
@@ -95,38 +89,39 @@ a {
 }
 
 .container-custom {
-  width: min(1240px, 100% - 2rem);
+  width: min(1180px, 100% - 2rem);
   margin-inline: auto;
 }
 
 @media (min-width: 768px) {
   .container-custom {
-    width: min(1240px, 100% - 3rem);
+    width: min(1180px, 100% - 3rem);
   }
 }
 
 @media (min-width: 1200px) {
   .container-custom {
-    width: min(1240px, 100% - 4.5rem);
+    width: min(1180px, 100% - 4rem);
   }
 }
 
 .glass-card {
-  background: linear-gradient(150deg, rgba(19, 29, 48, 0.8), rgba(11, 18, 31, 0.7));
-  border: 1px solid rgba(174, 198, 229, 0.14);
+  background: linear-gradient(150deg, rgba(18, 28, 46, 0.84), rgba(10, 17, 31, 0.76));
+  border: 1px solid rgba(166, 187, 219, 0.18);
   backdrop-filter: blur(14px);
   border-radius: 18px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
 }
 
 .glass-card-hover {
-  transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
 
 .glass-card-hover:hover {
-  transform: translateY(-3px);
-  border-color: rgba(58, 213, 193, 0.38);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(58, 213, 193, 0.18) inset;
+  transform: translateY(-2px);
+  border-color: rgba(90, 221, 200, 0.44);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.26), 0 0 0 1px rgba(88, 218, 199, 0.15) inset;
 }
 
 .section-divider {
@@ -135,7 +130,7 @@ a {
 }
 
 .gradient-text {
-  background: linear-gradient(120deg, #7deada, #f8cd79 45%, #ffffff 100%);
+  background: linear-gradient(118deg, #79e6d5, #f6c56e 44%, #fff4df 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -185,10 +180,10 @@ a {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.15rem;
+  padding: 0.78rem 1.16rem;
   border-radius: 12px;
-  border: 1px solid rgba(125, 234, 218, 0.5);
-  background: linear-gradient(120deg, #119e90, #19b9a9);
+  border: 1px solid rgba(125, 234, 218, 0.54);
+  background: linear-gradient(120deg, #129d90, #18b6a8);
   color: #eafffb;
   font-weight: 600;
   transition: transform 180ms ease, filter 180ms ease, box-shadow 180ms ease;
@@ -205,11 +200,11 @@ a {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.15rem;
+  padding: 0.78rem 1.16rem;
   border-radius: 12px;
-  border: 1px solid rgba(161, 180, 213, 0.35);
+  border: 1px solid rgba(161, 180, 213, 0.4);
   background: rgba(15, 22, 37, 0.5);
-  color: #dfebff;
+  color: #e2ecff;
   font-weight: 500;
   transition: border-color 180ms ease, background-color 180ms ease;
 }
@@ -222,11 +217,11 @@ a {
 .field-input {
   width: 100%;
   border-radius: 11px;
-  border: 1px solid rgba(171, 190, 219, 0.22);
+  border: 1px solid rgba(171, 190, 219, 0.24);
   background: rgba(9, 14, 24, 0.6);
   color: #eff4ff;
   font-size: 0.92rem;
-  padding: 0.7rem 0.9rem;
+  padding: 0.72rem 0.9rem;
   transition: border-color 180ms ease, box-shadow 180ms ease;
 }
 
@@ -246,9 +241,9 @@ a {
   gap: 0.35rem;
   border-radius: 999px;
   padding: 0.28rem 0.68rem;
-  border: 1px solid rgba(159, 174, 204, 0.3);
+  border: 1px solid rgba(159, 174, 204, 0.32);
   background: rgba(19, 29, 48, 0.55);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   color: var(--color-ink-200);
 }
 
@@ -296,9 +291,69 @@ a {
 }
 
 .animate-drift {
-  animation: drift 8s ease-in-out infinite;
+  animation: drift 10s ease-in-out infinite;
 }
 
 .animate-pulse-soft {
   animation: pulse-soft 2.4s ease-in-out infinite;
+}
+
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.58rem;
+}
+
+.logo-glyph {
+  position: relative;
+  padding-right: 0.58rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.42rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: #f2f6ff;
+}
+
+.logo-glyph::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 1px;
+  height: 1.03em;
+  background: rgba(223, 233, 255, 0.34);
+  transform: translateY(-50%);
+}
+
+.logo-name {
+  line-height: 1;
+  color: #eef3ff;
+  font-size: 1.06rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.logo-name-accent {
+  color: #78dfcf;
+}
+
+.logo-sub {
+  margin-top: 0.2rem;
+  font-size: 0.56rem;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  color: rgba(158, 176, 207, 0.85);
+}
+
+.logo-mark-sm .logo-glyph {
+  font-size: 1.22rem;
+}
+
+.logo-mark-sm .logo-name {
+  font-size: 0.97rem;
+}
+
+.logo-mark-sm .logo-sub {
+  letter-spacing: 0.26em;
 }
