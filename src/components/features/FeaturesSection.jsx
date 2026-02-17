@@ -102,11 +102,11 @@ export default function FeaturesSection() {
             <div className="container-custom">
                 <div className="mx-auto mb-14 max-w-3xl text-center">
                     <span className="chip border-brand-400/35 text-brand-300">{copy.chip}</span>
-                    <h2 className="mt-4 text-4xl font-bold leading-[1.24] tracking-tight text-ink-100 md:text-5xl">
+                    <h2 className="mt-4 text-4xl font-bold leading-[1.28] text-ink-100 md:text-5xl">
                         {copy.title}
                         <span className="gradient-text block">{copy.titleAccent}</span>
                     </h2>
-                    <p className="mt-5 text-base leading-relaxed text-ink-300 md:text-lg">
+                    <p className="mt-5 text-base leading-[1.72] text-ink-300 md:text-lg">
                         {copy.description}
                     </p>
                 </div>
@@ -124,7 +124,7 @@ export default function FeaturesSection() {
                                     <Icon size={18} className="text-ink-100" />
                                 </div>
                                 <h3 className="text-lg font-semibold text-ink-100">{feature.title}</h3>
-                                <p className="mt-2 text-[15px] leading-relaxed text-ink-300">{feature.description}</p>
+                                <p className="mt-3 text-[15px] leading-[1.72] text-ink-300">{feature.description}</p>
                             </article>
                         )
                     })}

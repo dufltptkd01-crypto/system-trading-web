@@ -42,11 +42,11 @@ export default function DashboardPreview() {
             <div className="container-custom">
                 <div className="mx-auto mb-12 max-w-3xl text-center">
                     <span className="chip border-brand-400/35 text-brand-300">{copy.chip}</span>
-                    <h2 className="mt-4 text-4xl font-bold leading-[1.24] tracking-tight text-ink-100 md:text-5xl">
+                    <h2 className="mt-4 text-4xl font-bold leading-[1.28] text-ink-100 md:text-5xl">
                         {copy.title}
                         <span className="gradient-text block">{copy.titleAccent}</span>
                     </h2>
-                    <p className="mt-5 text-base leading-relaxed text-ink-300 md:text-lg">
+                    <p className="mt-5 text-base leading-[1.72] text-ink-300 md:text-lg">
                         {copy.description}
                     </p>
                 </div>

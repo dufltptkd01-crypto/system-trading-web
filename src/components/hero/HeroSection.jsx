@@ -104,12 +104,12 @@ export default function HeroSection() {
                         {copy.badge}
                     </div>
 
-                    <h1 className="animate-rise mt-8 text-[clamp(2.9rem,7.2vw,6rem)] font-bold leading-[1.22] tracking-tight text-ink-100 text-balance" style={{ animationDelay: '0.08s' }}>
+                    <h1 className="animate-rise mt-8 text-[clamp(2.6rem,6.7vw,5.5rem)] font-bold leading-[1.28] text-ink-100 text-balance md:leading-[1.24]" style={{ animationDelay: '0.08s' }}>
                         <span className="block">{copy.headlinePrimary}</span>
-                        <span className="gradient-text block">{copy.headlineAccent}</span>
+                        <span className="gradient-text mt-1.5 block md:mt-2">{copy.headlineAccent}</span>
                     </h1>
 
-                    <p className="animate-rise mx-auto mt-7 max-w-2xl text-[17px] leading-relaxed text-ink-300 md:text-xl" style={{ animationDelay: '0.16s' }}>
+                    <p className="animate-rise mx-auto mt-7 max-w-2xl text-[17px] leading-[1.74] text-ink-300 md:text-xl" style={{ animationDelay: '0.16s' }}>
                         {copy.description}
                     </p>
 
@@ -142,7 +142,7 @@ export default function HeroSection() {
                                     <Icon size={18} />
                                 </div>
                                 <h3 className="text-lg font-semibold text-ink-100">{card.title}</h3>
-                                <p className="mt-2 text-[15px] leading-relaxed text-ink-300">{card.description}</p>
+                                <p className="mt-3 text-[15px] leading-[1.72] text-ink-300">{card.description}</p>
                             </article>
                         )
                     })}

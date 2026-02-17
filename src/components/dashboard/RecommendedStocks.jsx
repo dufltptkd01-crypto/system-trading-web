@@ -129,7 +129,7 @@ export default function RecommendedStocks() {
 
                             <div>
                                 <dt className="text-xs uppercase tracking-[0.14em] text-ink-500">{copy.labels.reason}</dt>
-                                <dd className="mt-2 flex items-start gap-2 text-[15px] leading-relaxed text-ink-300">
+                                <dd className="mt-2 flex items-start gap-2 text-[15px] leading-[1.72] text-ink-300">
                                     <TrendingUp size={16} className="mt-0.5 shrink-0 text-brand-300" />
                                     {stock.reason}
                                 </dd>

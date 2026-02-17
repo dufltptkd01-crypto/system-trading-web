@@ -108,7 +108,7 @@ export default function Footer() {
                         <Link to="/" className="inline-flex items-center">
                             <Logo compact />
                         </Link>
-                        <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-ink-400">
+                        <p className="mt-5 max-w-sm text-[15px] leading-[1.72] text-ink-400">
                             {copy.description}
                         </p>
                     </div>

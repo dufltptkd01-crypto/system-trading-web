@@ -72,11 +72,11 @@ export default function HowItWorksSection() {
             <div className="container-custom">
                 <div className="mx-auto mb-14 max-w-3xl text-center">
                     <span className="chip border-signal-400/40 text-signal-400">{copy.chip}</span>
-                    <h2 className="mt-4 text-4xl font-bold leading-[1.24] tracking-tight text-ink-100 md:text-5xl">
+                    <h2 className="mt-4 text-4xl font-bold leading-[1.28] text-ink-100 md:text-5xl">
                         {copy.title}
                         <span className="gradient-text-gold block">{copy.titleAccent}</span>
                     </h2>
-                    <p className="mt-5 text-base leading-relaxed text-ink-300 md:text-lg">
+                    <p className="mt-5 text-base leading-[1.72] text-ink-300 md:text-lg">
                         {copy.description}
                     </p>
                 </div>
@@ -97,7 +97,7 @@ export default function HowItWorksSection() {
                                     <Icon size={18} />
                                 </div>
                                 <h3 className="text-lg font-semibold text-ink-100">{step.title}</h3>
-                                <p className="mt-2 text-[15px] leading-relaxed text-ink-300">{step.description}</p>
+                                <p className="mt-3 text-[15px] leading-[1.72] text-ink-300">{step.description}</p>
 
                                 <ul className="mt-4 space-y-2">
                                     {step.points.map((point) => (

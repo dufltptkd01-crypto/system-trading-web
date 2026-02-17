@@ -87,11 +87,11 @@ export default function SecuritySection() {
             <div className="container-custom relative z-10">
                 <div className="mx-auto mb-12 max-w-3xl text-center">
                     <span className="chip border-brand-400/35 text-brand-300">{copy.chip}</span>
-                    <h2 className="mt-4 text-4xl font-bold leading-[1.24] tracking-tight text-ink-100 md:text-5xl">
+                    <h2 className="mt-4 text-4xl font-bold leading-[1.28] text-ink-100 md:text-5xl">
                         {copy.title}
                         <span className="gradient-text block">{copy.titleAccent}</span>
                     </h2>
-                    <p className="mt-5 text-base leading-relaxed text-ink-300 md:text-lg">
+                    <p className="mt-5 text-base leading-[1.72] text-ink-300 md:text-lg">
                         {copy.description}
                     </p>
                 </div>
@@ -100,7 +100,7 @@ export default function SecuritySection() {
                     <div className="glass-card rounded-2xl p-6 text-center md:p-8">
                         <p className="text-xs uppercase tracking-[0.2em] text-brand-300">{copy.principleLabel}</p>
                         <h3 className="mt-3 text-2xl font-semibold text-ink-100">{copy.principleTitle}</h3>
-                        <p className="mx-auto mt-3 max-w-2xl text-[15px] leading-relaxed text-ink-300">
+                        <p className="mx-auto mt-3 max-w-2xl text-[15px] leading-[1.72] text-ink-300">
                             {copy.principleDescription}
                         </p>
                     </div>
@@ -120,7 +120,7 @@ export default function SecuritySection() {
                                     </span>
                                 </div>
                                 <h3 className="text-lg font-semibold text-ink-100">{item.title}</h3>
-                                <p className="mt-2 text-[15px] leading-relaxed text-ink-300">{item.description}</p>
+                                <p className="mt-3 text-[15px] leading-[1.72] text-ink-300">{item.description}</p>
                             </article>
                         )
                     })}

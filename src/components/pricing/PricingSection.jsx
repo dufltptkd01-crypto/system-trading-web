@@ -132,11 +132,11 @@ export default function PricingSection() {
             <div className="container-custom relative z-10">
                 <div className="mx-auto mb-14 max-w-3xl text-center">
                     <span className="chip border-signal-400/35 text-signal-400">{copy.chip}</span>
-                    <h2 className="mt-4 text-4xl font-bold leading-[1.24] tracking-tight text-ink-100 md:text-5xl">
+                    <h2 className="mt-4 text-4xl font-bold leading-[1.28] text-ink-100 md:text-5xl">
                         {copy.title}
                         <span className="gradient-text-gold block">{copy.titleAccent}</span>
                     </h2>
-                    <p className="mt-5 text-base leading-relaxed text-ink-300 md:text-lg">{copy.description}</p>
+                    <p className="mt-5 text-base leading-[1.72] text-ink-300 md:text-lg">{copy.description}</p>
                 </div>
 
                 <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-3">
