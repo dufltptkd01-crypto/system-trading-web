@@ -42,9 +42,10 @@ export async function onRequest(context) {
   }
 
   if (!hasFileExtension(url.pathname)) {
-    const indexPath = hasDistFallback ? '/dist/index.html' : '/index.html'
+    const indexPath = hasDistFallback ? '/dist/index.html' : '/'
     const indexResponse = await env.ASSETS.fetch(new Request(new URL(indexPath, url), request))
-    if (indexResponse.status !== 404) {
+    const indexContentType = (indexResponse.headers.get('content-type') || '').toLowerCase()
+    if (indexResponse.status === 200 && indexContentType.includes('text/html')) {
       return cloneWithStatus(indexResponse, 200)
     }
   }
