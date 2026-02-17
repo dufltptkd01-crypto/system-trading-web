@@ -1,4 +1,5 @@
-﻿import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { useI18n } from '../../i18n/I18nContext.jsx'
 
 function generateCandleData(count = 64) {
     const data = []
@@ -18,7 +19,33 @@ function generateCandleData(count = 64) {
     return data
 }
 
+const content = {
+    ko: {
+        name: '삼성전자',
+        open: '시가',
+        high: '고가',
+        low: '저가',
+        close: '종가',
+        ema: 'EMA 20',
+        bull: '양봉',
+        bear: '음봉',
+    },
+    en: {
+        name: 'Samsung Electronics',
+        open: 'Open',
+        high: 'High',
+        low: 'Low',
+        close: 'Close',
+        ema: 'EMA 20',
+        bull: 'Bull candle',
+        bear: 'Bear candle',
+    },
+}
+
 export default function TradingChart() {
+    const { locale } = useI18n()
+    const copy = content[locale] || content.ko
+
     const canvasRef = useRef(null)
     const [data] = useState(() => generateCandleData())
     const [hoveredCandle, setHoveredCandle] = useState(null)
@@ -167,14 +194,14 @@ export default function TradingChart() {
         <div>
             <div className="mb-4 flex flex-wrap items-center gap-5 text-sm">
                 <div>
-                    <p className="text-base font-semibold text-ink-100">Samsung Electronics</p>
+                    <p className="text-base font-semibold text-ink-100">{copy.name}</p>
                     <p className="text-xs text-ink-500">005930</p>
                 </div>
                 <div className="flex flex-wrap gap-3 text-xs sm:text-sm">
-                    <p className="text-ink-400">Open <span className="text-ink-200">{Math.round(activeCandle.open).toLocaleString()}</span></p>
-                    <p className="text-ink-400">High <span className="text-success-400">{Math.round(activeCandle.high).toLocaleString()}</span></p>
-                    <p className="text-ink-400">Low <span className="text-danger-400">{Math.round(activeCandle.low).toLocaleString()}</span></p>
-                    <p className="text-ink-400">Close <span className={activeCandle.close >= activeCandle.open ? 'text-success-400' : 'text-danger-400'}>{Math.round(activeCandle.close).toLocaleString()}</span></p>
+                    <p className="text-ink-400">{copy.open} <span className="text-ink-200">{Math.round(activeCandle.open).toLocaleString()}</span></p>
+                    <p className="text-ink-400">{copy.high} <span className="text-success-400">{Math.round(activeCandle.high).toLocaleString()}</span></p>
+                    <p className="text-ink-400">{copy.low} <span className="text-danger-400">{Math.round(activeCandle.low).toLocaleString()}</span></p>
+                    <p className="text-ink-400">{copy.close} <span className={activeCandle.close >= activeCandle.open ? 'text-success-400' : 'text-danger-400'}>{Math.round(activeCandle.close).toLocaleString()}</span></p>
                 </div>
             </div>
 
@@ -187,9 +214,9 @@ export default function TradingChart() {
             />
 
             <div className="mt-3 flex items-center gap-4 text-xs text-ink-500">
-                <div className="inline-flex items-center gap-1.5"><span className="h-0.5 w-4 rounded bg-brand-400" />EMA 20</div>
-                <div className="inline-flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm bg-success-500" />Bull candle</div>
-                <div className="inline-flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm bg-danger-500" />Bear candle</div>
+                <div className="inline-flex items-center gap-1.5"><span className="h-0.5 w-4 rounded bg-brand-400" />{copy.ema}</div>
+                <div className="inline-flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm bg-success-500" />{copy.bull}</div>
+                <div className="inline-flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm bg-danger-500" />{copy.bear}</div>
             </div>
         </div>
     )

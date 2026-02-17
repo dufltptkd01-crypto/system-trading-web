@@ -1,34 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-ink-950: #060b14;
-  --color-ink-900: #0c1424;
-  --color-ink-850: #111c30;
-  --color-ink-800: #17233a;
-  --color-ink-700: #22314c;
-  --color-ink-600: #30435f;
-  --color-ink-500: #435879;
-  --color-ink-400: #6e81a3;
-  --color-ink-300: #9faecc;
-  --color-ink-200: #cfd8ea;
-  --color-ink-100: #edf2ff;
+  --color-ink-950: #050a12;
+  --color-ink-900: #0a1322;
+  --color-ink-850: #101b2f;
+  --color-ink-800: #16253d;
+  --color-ink-700: #223550;
+  --color-ink-600: #2f4666;
+  --color-ink-500: #466081;
+  --color-ink-400: #7d92b4;
+  --color-ink-300: #a6b5cf;
+  --color-ink-200: #d4deef;
+  --color-ink-100: #eef4ff;
 
-  --color-brand-500: #16b8a7;
-  --color-brand-400: #3ad5c1;
-  --color-brand-300: #74e8d6;
-  --color-brand-600: #0f9488;
+  --color-brand-500: #14af9f;
+  --color-brand-400: #34d2bf;
+  --color-brand-300: #82ebda;
+  --color-brand-600: #0b8c80;
 
-  --color-signal-500: #f59e0b;
-  --color-signal-400: #f9bc4f;
+  --color-signal-500: #f39d0f;
+  --color-signal-400: #f6bf60;
 
-  --color-success-500: #27b36f;
-  --color-success-400: #4fcb8f;
+  --color-success-500: #2aaa6f;
+  --color-success-400: #5ed19a;
 
-  --color-danger-500: #ef5350;
-  --color-danger-400: #f47a77;
+  --color-danger-500: #ef5f5b;
+  --color-danger-400: #f88a86;
 
-  --font-sans: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-sans: 'Noto Sans KR', 'Segoe UI', sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Noto Sans KR', sans-serif;
   --font-mono: 'JetBrains Mono', 'Consolas', monospace;
 }
 
@@ -44,21 +45,28 @@ html {
 
 body {
   font-family: var(--font-sans);
+  font-size: 16px;
   color: var(--color-ink-200);
   background:
-    radial-gradient(circle at 14% 18%, rgba(22, 184, 167, 0.16), transparent 34%),
-    radial-gradient(circle at 82% 2%, rgba(245, 158, 11, 0.14), transparent 38%),
-    linear-gradient(160deg, var(--color-ink-950), var(--color-ink-900) 45%, #111f38 100%);
+    radial-gradient(circle at 12% 14%, rgba(18, 173, 157, 0.15), transparent 32%),
+    radial-gradient(circle at 82% 4%, rgba(243, 157, 15, 0.12), transparent 36%),
+    linear-gradient(160deg, #040811, var(--color-ink-900) 44%, #13233d 100%);
   min-height: 100vh;
   overflow-x: hidden;
-  line-height: 1.55;
+  line-height: 1.7;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-body::before {
-  content: none;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
 }
 
 a {
@@ -67,7 +75,7 @@ a {
 }
 
 ::selection {
-  background: rgba(58, 213, 193, 0.25);
+  background: rgba(52, 210, 191, 0.26);
   color: #f8ffff;
 }
 
@@ -89,28 +97,34 @@ a {
 }
 
 .container-custom {
-  width: min(1180px, 100% - 2rem);
+  width: min(1200px, 100% - 2rem);
   margin-inline: auto;
 }
 
 @media (min-width: 768px) {
   .container-custom {
-    width: min(1180px, 100% - 3rem);
+    width: min(1200px, 100% - 3rem);
   }
 }
 
 @media (min-width: 1200px) {
   .container-custom {
-    width: min(1180px, 100% - 4rem);
+    width: min(1200px, 100% - 4rem);
   }
 }
 
+.hero-surface {
+  background:
+    radial-gradient(circle at 14% 16%, rgba(20, 175, 159, 0.08), transparent 38%),
+    radial-gradient(circle at 82% 8%, rgba(243, 157, 15, 0.08), transparent 42%);
+}
+
 .glass-card {
-  background: linear-gradient(150deg, rgba(18, 28, 46, 0.84), rgba(10, 17, 31, 0.76));
-  border: 1px solid rgba(166, 187, 219, 0.18);
+  background: linear-gradient(148deg, rgba(18, 30, 49, 0.84), rgba(9, 16, 29, 0.78));
+  border: 1px solid rgba(169, 188, 220, 0.18);
   backdrop-filter: blur(14px);
   border-radius: 18px;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 14px 36px rgba(1, 4, 10, 0.44);
   overflow: hidden;
 }
 
@@ -119,9 +133,9 @@ a {
 }
 
 .glass-card-hover:hover {
-  transform: translateY(-2px);
-  border-color: rgba(90, 221, 200, 0.44);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.26), 0 0 0 1px rgba(88, 218, 199, 0.15) inset;
+  transform: translateY(-3px);
+  border-color: rgba(130, 235, 218, 0.46);
+  box-shadow: 0 18px 40px rgba(1, 4, 10, 0.55), 0 0 0 1px rgba(130, 235, 218, 0.15) inset;
 }
 
 .section-divider {
@@ -130,7 +144,7 @@ a {
 }
 
 .gradient-text {
-  background: linear-gradient(118deg, #79e6d5, #f6c56e 44%, #fff4df 100%);
+  background: linear-gradient(118deg, #82ebda, #f7d391 52%, #fff1d7 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -153,7 +167,7 @@ a {
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(130deg, rgba(125, 234, 218, 0.7), rgba(248, 205, 121, 0.52));
+  background: linear-gradient(130deg, rgba(130, 235, 218, 0.7), rgba(248, 205, 121, 0.52));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -175,18 +189,23 @@ a {
   border-radius: 999px;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.78rem 1.16rem;
-  border-radius: 12px;
-  border: 1px solid rgba(125, 234, 218, 0.54);
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 180ms ease, filter 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.btn-primary {
+  padding: 0.82rem 1.25rem;
+  border: 1px solid rgba(125, 234, 218, 0.56);
   background: linear-gradient(120deg, #129d90, #18b6a8);
   color: #eafffb;
-  font-weight: 600;
-  transition: transform 180ms ease, filter 180ms ease, box-shadow 180ms ease;
 }
 
 .btn-primary:hover {
@@ -196,32 +215,25 @@ a {
 }
 
 .btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.78rem 1.16rem;
-  border-radius: 12px;
-  border: 1px solid rgba(161, 180, 213, 0.4);
-  background: rgba(15, 22, 37, 0.5);
+  padding: 0.82rem 1.25rem;
+  border: 1px solid rgba(161, 180, 213, 0.42);
+  background: rgba(15, 22, 37, 0.54);
   color: #e2ecff;
-  font-weight: 500;
-  transition: border-color 180ms ease, background-color 180ms ease;
 }
 
 .btn-secondary:hover {
-  border-color: rgba(116, 232, 214, 0.52);
-  background: rgba(22, 32, 52, 0.66);
+  border-color: rgba(116, 232, 214, 0.54);
+  background: rgba(22, 32, 52, 0.7);
 }
 
 .field-input {
   width: 100%;
-  border-radius: 11px;
+  border-radius: 12px;
   border: 1px solid rgba(171, 190, 219, 0.24);
   background: rgba(9, 14, 24, 0.6);
   color: #eff4ff;
-  font-size: 0.92rem;
-  padding: 0.72rem 0.9rem;
+  font-size: 0.95rem;
+  padding: 0.78rem 0.95rem;
   transition: border-color 180ms ease, box-shadow 180ms ease;
 }
 
@@ -240,16 +252,16 @@ a {
   align-items: center;
   gap: 0.35rem;
   border-radius: 999px;
-  padding: 0.28rem 0.68rem;
+  padding: 0.34rem 0.76rem;
   border: 1px solid rgba(159, 174, 204, 0.32);
-  background: rgba(19, 29, 48, 0.55);
+  background: rgba(19, 29, 48, 0.58);
   font-size: 0.74rem;
   color: var(--color-ink-200);
 }
 
 .pricing-popular {
-  background: linear-gradient(145deg, rgba(15, 35, 54, 0.82), rgba(18, 55, 52, 0.64));
-  border-color: rgba(125, 234, 218, 0.38);
+  background: linear-gradient(145deg, rgba(16, 38, 60, 0.84), rgba(14, 62, 58, 0.66));
+  border-color: rgba(125, 234, 218, 0.4);
 }
 
 @keyframes rise {
@@ -307,8 +319,8 @@ a {
 .logo-glyph {
   position: relative;
   padding-right: 0.58rem;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.42rem;
+  font-family: var(--font-display);
+  font-size: 1.28rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.01em;
@@ -347,11 +359,11 @@ a {
 }
 
 .logo-mark-sm .logo-glyph {
-  font-size: 1.22rem;
+  font-size: 1.18rem;
 }
 
 .logo-mark-sm .logo-name {
-  font-size: 0.97rem;
+  font-size: 0.96rem;
 }
 
 .logo-mark-sm .logo-sub {

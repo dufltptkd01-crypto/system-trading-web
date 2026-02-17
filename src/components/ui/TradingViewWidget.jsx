@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-export default function TradingViewWidget({ symbol = 'BINANCE:BTCUSDT', height = 500, theme = 'dark' }) {
+export default function TradingViewWidget({ symbol = 'BINANCE:BTCUSDT', height = 500, theme = 'dark', widgetLocale = 'kr' }) {
     const containerRef = useRef(null)
     const [loadError, setLoadError] = useState('')
 
@@ -24,7 +24,7 @@ export default function TradingViewWidget({ symbol = 'BINANCE:BTCUSDT', height =
             timezone: 'Asia/Seoul',
             theme: theme,
             style: '1',
-            locale: 'kr',
+            locale: widgetLocale,
             enable_publishing: false,
             allow_symbol_change: true,
             hide_side_toolbar: false,
@@ -39,7 +39,7 @@ export default function TradingViewWidget({ symbol = 'BINANCE:BTCUSDT', height =
                 containerRef.current.innerHTML = ''
             }
         }
-    }, [symbol, theme])
+    }, [symbol, theme, widgetLocale])
 
     if (loadError) {
         return (

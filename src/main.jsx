@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import AppErrorBoundary from './components/common/AppErrorBoundary.jsx'
+import { I18nProvider } from './i18n/I18nContext.jsx'
 import './index.css'
 
 function getBasename() {
@@ -22,7 +23,7 @@ function isIgnorableAsyncError(reason) {
 function renderFatalFallback(root, error) {
     console.error('[bootstrap] Fatal mount error:', error)
     root.innerHTML = `
-      <section style="min-height:100vh;display:grid;place-items:center;padding:2rem;background:#0b1322;color:#e8efff;font-family:'Space Grotesk','Segoe UI',sans-serif;">
+      <section style="min-height:100vh;display:grid;place-items:center;padding:2rem;background:#0b1322;color:#e8efff;font-family:'Noto Sans KR','Segoe UI',sans-serif;">
         <div style="max-width:720px;width:100%;background:#111c30;border:1px solid rgba(255,255,255,0.14);border-radius:16px;padding:1.5rem;">
           <h1 style="font-size:1.4rem;margin-bottom:0.5rem;">App failed to start</h1>
           <p style="color:#a3b3ce;margin-bottom:1rem;">The app could not mount. Try refreshing the page.</p>
@@ -53,7 +54,9 @@ try {
         <React.StrictMode>
             <AppErrorBoundary>
                 <BrowserRouter basename={getBasename()}>
-                    <App />
+                    <I18nProvider>
+                        <App />
+                    </I18nProvider>
                 </BrowserRouter>
             </AppErrorBoundary>
         </React.StrictMode>,
