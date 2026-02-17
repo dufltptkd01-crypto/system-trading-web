@@ -77,42 +77,43 @@ export default function HeroSection() {
     const copy = content[locale] || content.ko
 
     return (
-        <section id="hero" className="relative overflow-hidden pb-24 pt-24 md:pb-32 md:pt-28">
+        <section id="hero" className="relative overflow-hidden pb-28 pt-28 md:pb-40 md:pt-32">
             <div className="pointer-events-none absolute inset-0 hero-surface">
-                <div className="absolute -left-32 top-8 h-80 w-80 rounded-full bg-brand-400/20 blur-[130px]" />
-                <div className="absolute -right-10 top-8 h-80 w-80 rounded-full bg-signal-400/18 blur-[130px]" />
-                <div className="absolute inset-x-0 bottom-0 h-[300px] opacity-55">
+                <div className="absolute -left-32 top-8 h-80 w-80 rounded-full bg-brand-400/22 blur-[130px]" />
+                <div className="absolute -right-10 top-8 h-80 w-80 rounded-full bg-signal-400/20 blur-[130px]" />
+                <div className="absolute inset-x-0 bottom-0 h-[340px] opacity-90">
                     <svg viewBox="0 0 1200 300" className="h-full w-full">
                         <defs>
                             <linearGradient id="heroLine" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stopColor="#3ad5c1" stopOpacity="0.1" />
-                                <stop offset="50%" stopColor="#74e8d6" stopOpacity="0.85" />
-                                <stop offset="100%" stopColor="#f9bc4f" stopOpacity="0.2" />
+                                <stop offset="0%" stopColor="#3ad5c1" stopOpacity="0.24" />
+                                <stop offset="50%" stopColor="#74e8d6" stopOpacity="0.96" />
+                                <stop offset="100%" stopColor="#f9bc4f" stopOpacity="0.36" />
                             </linearGradient>
                         </defs>
-                        <path d="M0 220 L120 198 L210 214 L310 168 L430 176 L530 118 L640 138 L730 88 L830 110 L930 72 L1030 88 L1200 54" fill="none" stroke="url(#heroLine)" strokeWidth="3" />
-                        <path d="M0 242 L120 226 L210 236 L310 195 L430 205 L530 149 L640 164 L730 122 L830 140 L930 104 L1030 122 L1200 96" fill="none" stroke="url(#heroLine)" strokeOpacity="0.36" strokeWidth="2" />
+                        <path d="M0 220 L120 198 L210 214 L310 168 L430 176 L530 118 L640 138 L730 88 L830 110 L930 72 L1030 88 L1200 54" fill="none" stroke="url(#heroLine)" strokeWidth="3.6" strokeLinecap="round" />
+                        <path d="M0 242 L120 226 L210 236 L310 195 L430 205 L530 149 L640 164 L730 122 L830 140 L930 104 L1030 122 L1200 96" fill="none" stroke="url(#heroLine)" strokeOpacity="0.52" strokeWidth="2.4" strokeLinecap="round" />
+                        <path d="M0 258 L120 246 L210 252 L310 214 L430 226 L530 174 L640 188 L730 146 L830 162 L930 132 L1030 146 L1200 126" fill="none" stroke="url(#heroLine)" strokeOpacity="0.32" strokeWidth="1.8" strokeLinecap="round" />
                     </svg>
                 </div>
             </div>
 
             <div className="container-custom relative z-10">
-                <div className="mx-auto max-w-[920px] text-center">
+                <div className="mx-auto max-w-[960px] text-center">
                     <div className="animate-rise inline-flex items-center gap-2 rounded-full border border-brand-400/35 bg-brand-400/12 px-4 py-2 text-xs font-medium text-brand-300">
                         <span className="h-2 w-2 rounded-full bg-brand-400 animate-pulse-soft" />
                         {copy.badge}
                     </div>
 
-                    <h1 className="animate-rise mt-8 text-[clamp(2.2rem,6vw,4.8rem)] font-bold leading-[1.12] tracking-tight text-ink-100 text-balance md:leading-[1.1]" style={{ animationDelay: '0.08s' }}>
+                    <h1 className="animate-rise mt-8 text-[clamp(2.9rem,7.2vw,6rem)] font-bold leading-[1.22] tracking-tight text-ink-100 text-balance" style={{ animationDelay: '0.08s' }}>
                         <span className="block">{copy.headlinePrimary}</span>
                         <span className="gradient-text block">{copy.headlineAccent}</span>
                     </h1>
 
-                    <p className="animate-rise mx-auto mt-6 max-w-2xl text-base leading-relaxed text-ink-300 md:text-xl" style={{ animationDelay: '0.16s' }}>
+                    <p className="animate-rise mx-auto mt-7 max-w-2xl text-[17px] leading-relaxed text-ink-300 md:text-xl" style={{ animationDelay: '0.16s' }}>
                         {copy.description}
                     </p>
 
-                    <div className="animate-rise mt-11 flex flex-col items-center justify-center gap-3 sm:flex-row" style={{ animationDelay: '0.24s' }}>
+                    <div className="animate-rise mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row" style={{ animationDelay: '0.24s' }}>
                         <Link to="/signup" className="btn-primary w-full sm:w-auto">
                             {copy.primaryCta}
                             <ArrowRight size={17} />
@@ -122,7 +123,7 @@ export default function HeroSection() {
                         </Link>
                     </div>
 
-                    <div className="animate-rise mt-14 grid gap-4 sm:grid-cols-3" style={{ animationDelay: '0.32s' }}>
+                    <div className="animate-rise mt-16 grid gap-4 sm:grid-cols-3" style={{ animationDelay: '0.32s' }}>
                         {copy.highlights.map((item) => (
                             <div key={item.label} className="glass-card p-5 text-center">
                                 <p className="text-2xl font-semibold text-ink-100">{item.value}</p>
@@ -132,11 +133,11 @@ export default function HeroSection() {
                     </div>
                 </div>
 
-                <div className="mt-10 grid gap-4 md:grid-cols-3">
+                <div className="mt-16 grid gap-5 md:mt-20 md:grid-cols-3">
                     {copy.cards.map((card, index) => {
                         const Icon = card.icon
                         return (
-                            <article key={card.title} className="glass-card glass-card-hover animate-rise p-6" style={{ animationDelay: `${0.2 + index * 0.08}s` }}>
+                            <article key={card.title} className="glass-card glass-card-hover animate-rise p-6 md:p-7" style={{ animationDelay: `${0.2 + index * 0.08}s` }}>
                                 <div className={`mb-4 inline-flex rounded-lg p-2 ${card.tone}`}>
                                     <Icon size={18} />
                                 </div>

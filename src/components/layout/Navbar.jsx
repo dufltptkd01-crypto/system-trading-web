@@ -108,17 +108,17 @@ export default function Navbar() {
                 isScrolled ? 'shadow-[0_14px_28px_rgba(2,6,14,0.45)]' : ''
             }`}
         >
-            <nav className="container-custom flex h-[84px] items-center justify-between gap-4">
+            <nav className="container-custom flex h-[92px] items-center justify-between gap-5">
                 <Link to="/" className="shrink-0" aria-label={copy.homeAria}>
                     <Logo compact showSub={false} />
                 </Link>
 
-                <div className="hidden xl:flex items-center gap-7">
+                <div className="hidden xl:flex items-center gap-9">
                     {copy.sectionLinks.map((item) => (
                         <button
                             key={item.hash}
                             onClick={() => moveToSection(item.hash)}
-                            className="text-sm font-medium text-ink-300 transition-colors hover:text-ink-100"
+                            className="text-sm font-medium tracking-[0.01em] text-ink-300 transition-colors hover:text-ink-100"
                         >
                             {item.label}
                         </button>
@@ -128,7 +128,7 @@ export default function Navbar() {
                         <button
                             type="button"
                             onClick={() => setIsTradingOpen((prev) => !prev)}
-                            className="inline-flex items-center gap-1 text-sm font-medium text-ink-300 transition-colors hover:text-ink-100"
+                            className="inline-flex items-center gap-1 text-sm font-medium tracking-[0.01em] text-ink-300 transition-colors hover:text-ink-100"
                         >
                             {copy.trading}
                             <ChevronDown size={14} className={`transition-transform ${isTradingOpen ? 'rotate-180' : ''}`} />
@@ -149,7 +149,7 @@ export default function Navbar() {
                     </div>
                 </div>
 
-                <div className="hidden xl:flex items-center gap-2.5">
+                <div className="hidden xl:flex items-center gap-3.5">
                     <div className="inline-flex items-center gap-1.5 rounded-full border border-white/14 bg-ink-900/72 px-1.5 py-1">
                         <button
                             type="button"
