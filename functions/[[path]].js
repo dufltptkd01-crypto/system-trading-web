@@ -2,7 +2,7 @@ function hasFileExtension(pathname) {
   return /\.[a-zA-Z0-9]+$/.test(pathname)
 }
 
-function normalizeDistPath(pathname) {
+function normalizeAssetPath(pathname, prefix = '') {
   if (!pathname) return null
 
   const strippedQuery = pathname.split('?')[0]
@@ -10,19 +10,23 @@ function normalizeDistPath(pathname) {
     .replace(/^\.\//, '/')
     .replace(/^\/+/, '/')
 
-  if (normalized.startsWith('/dist/')) return normalized
-  if (!normalized.startsWith('/')) return `/dist/${normalized}`
-  return `/dist${normalized}`
+  if (!prefix) {
+    return normalized.startsWith('/') ? normalized : `/${normalized}`
+  }
+
+  const basePrefix = prefix.endsWith('/') ? prefix.slice(0, -1) : prefix
+  if (normalized.startsWith(`${basePrefix}/`)) return normalized
+  return `${basePrefix}${normalized.startsWith('/') ? normalized : `/${normalized}`}`
 }
 
-async function readDistEntrypoints(distIndexResponse) {
-  const html = await distIndexResponse.clone().text()
+async function readEntrypoints(indexResponse, assetPrefix = '') {
+  const html = await indexResponse.clone().text()
   const scriptMatch = html.match(/<script[^>]+type="module"[^>]+src="([^"]+)"/i)
   const cssMatch = html.match(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"/i)
 
   return {
-    script: normalizeDistPath(scriptMatch?.[1]),
-    css: normalizeDistPath(cssMatch?.[1]),
+    script: normalizeAssetPath(scriptMatch?.[1], assetPrefix),
+    css: normalizeAssetPath(cssMatch?.[1], assetPrefix),
   }
 }
 
@@ -45,14 +49,27 @@ export async function onRequest(context) {
   const distIndexResponse = await env.ASSETS.fetch(new Request(distIndexUrl, request))
   const distContentType = (distIndexResponse.headers.get('content-type') || '').toLowerCase()
   const hasDistFallback = distIndexResponse.status === 200 && distContentType.includes('text/html')
+  const distAssetPrefix = '/dist'
 
-  if (hasDistFallback) {
+  let rootIndexResponse = null
+  let hasRootFallback = false
+  if (!hasDistFallback) {
+    const rootIndexUrl = new URL('/', url)
+    rootIndexResponse = await env.ASSETS.fetch(new Request(rootIndexUrl, request))
+    const rootContentType = (rootIndexResponse.headers.get('content-type') || '').toLowerCase()
+    hasRootFallback = rootIndexResponse.status === 200 && rootContentType.includes('text/html')
+  }
+
+  const hasIndexFallback = hasDistFallback || hasRootFallback
+  const indexResponse = hasDistFallback ? distIndexResponse : rootIndexResponse
+
+  if (hasIndexFallback) {
     if (url.pathname === '/' || url.pathname === '/index.html' || !hasFileExtension(url.pathname)) {
-      return cloneWithStatus(distIndexResponse, 200)
+      return cloneWithStatus(indexResponse, 200)
     }
 
-    if (url.pathname.startsWith('/assets/') || url.pathname === '/vite.svg') {
-      const mappedUrl = new URL(`/dist${url.pathname}`, url)
+    if (hasDistFallback && (url.pathname.startsWith('/assets/') || url.pathname === '/vite.svg')) {
+      const mappedUrl = new URL(`${distAssetPrefix}${url.pathname}`, url)
       const mappedResponse = await env.ASSETS.fetch(new Request(mappedUrl, request))
       if (mappedResponse.status !== 404) {
         return mappedResponse
@@ -60,7 +77,7 @@ export async function onRequest(context) {
     }
 
     if (url.pathname === '/src/main.jsx' || url.pathname === '/src/index.css') {
-      const entrypoints = await readDistEntrypoints(distIndexResponse)
+      const entrypoints = await readEntrypoints(indexResponse, hasDistFallback ? distAssetPrefix : '')
       const mappedPath = url.pathname === '/src/main.jsx' ? entrypoints.script : entrypoints.css
 
       if (mappedPath) {
